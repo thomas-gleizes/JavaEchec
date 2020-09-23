@@ -1,15 +1,24 @@
 package Echec.module.Piece;
 
+import Echec.module.Player;
+
 public abstract class Piece {
 
+    private Player player;
     private int x;
     private int y;
     private char icon;
 
-    public Piece (int x, int y, char icon){
+    public Piece (Player p, int x, int y, char icon){
+        this.player = p;
         this.x = x;
         this.y = y;
         this.icon = icon;
+    }
+
+    public void moveTo(int tx, int ty){
+        this.x += tx;
+        this.y += ty;
     }
 
     public int getX() {
@@ -28,8 +37,8 @@ public abstract class Piece {
         this.y = y;
     }
 
-    public char getIcon() {
-        return icon;
+    public String getIcon() {
+        return player.getColor() + icon + "\u001B[0m";
     }
 
     public void setIcon(char icon) {

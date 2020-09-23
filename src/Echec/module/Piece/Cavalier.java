@@ -1,9 +1,11 @@
 package Echec.module.Piece;
 
+import Echec.module.Player;
+
 public class Cavalier extends Piece {
 
-    public Cavalier(int x, int y) {
-        super(x, y, 'C');
+    public Cavalier(Player p, int x, int y) {
+        super(p, x, y, 'C');
     }
 
 

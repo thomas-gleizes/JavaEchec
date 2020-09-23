@@ -1,26 +1,26 @@
 package Echec.module;
 
-import Echec.module.Piece.Pion;
+import Echec.module.Piece.Piece;
 
 public class Plateau {
 
-    private Pion[][] bord;
+    private Piece[][] bord;
     private Player p1;
     private Player p2;
 
     public Plateau (String namePlayer1, String namePlayer2){
-        bord = new Pion[8][8];
+        bord = new Piece[8][8];
         this.p1 = new Player(1, namePlayer1);
         this.p2 = new Player(2, namePlayer2);
 
-        for (Pion p : p1.getPionJouable()){
+        for (Piece p : p1.getPionJouable()){
+            bord[p.getX()][p.getY()] = p;
+        }
+        for (Piece p : p2.getPionJouable()){
             bord[p.getX()][p.getY()] = p;
         }
 
-
     }
-
-
 
 
     @Override

@@ -1,13 +1,12 @@
 package Echec.module.Piece;
 
+import Echec.module.Player;
+
 public class Pion extends Piece{
 
-    public Pion(int x, int y) {
-       super(x, y, 'O');
+    public Pion(Player p, int x, int y) {
+       super(p, x, y, 'O');
     }
 
-    public void moveTo(int tx){
-
-    }
 
 }
