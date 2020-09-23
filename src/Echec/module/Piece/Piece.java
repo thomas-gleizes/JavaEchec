@@ -4,21 +4,16 @@ import Echec.module.Player;
 
 public abstract class Piece {
 
-    private Player player;
-    private int x;
-    private int y;
+    protected Player player;
+    protected int x;
+    protected int y;
     private char icon;
 
-    public Piece (Player p, int x, int y, char icon){
+    public Piece(Player p, int x, int y, char icon) {
         this.player = p;
         this.x = x;
         this.y = y;
         this.icon = icon;
-    }
-
-    public void moveTo(int tx, int ty){
-        this.x += tx;
-        this.y += ty;
     }
 
     public int getX() {
@@ -43,5 +38,10 @@ public abstract class Piece {
 
     public void setIcon(char icon) {
         this.icon = icon;
+    }
+
+    public String toString() {
+        return "Player" + this.player.getNum() + " : " + this.player.getName() + "\n" +
+                "X : " + this.x + "\nY : " + this.y;
     }
 }

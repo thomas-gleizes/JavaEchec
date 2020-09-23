@@ -7,12 +7,12 @@ import java.util.List;
 
 public class Player {
 
-    private int num;
-    private String name;
+    private final int num;
+    private final String name;
     private int nbCoups;
-    private String color;
-    private List<Piece> pionJouable;
-    private List<Piece> pionPerdu;
+    private final String color;
+    private final List<Piece> pionJouable;
+    private final List<Piece> pionPerdu;
 
     public Player(int num, String name) {
         this.num = num;
@@ -20,7 +20,7 @@ public class Player {
         nbCoups = 0;
         pionJouable = new ArrayList<>();
 
-        if (num == 1){
+        if (num == 1) {
             color = "\u001B[31m";
             for (int i = 0; i < 8; i++) {
                 pionJouable.add(new Pion(this, 1, i));
@@ -38,7 +38,7 @@ public class Player {
             for (int i = 0; i < 8; i++) {
                 pionJouable.add(new Pion(this, 6, i));
             }
-            pionJouable.add(new Cavalier(this,7, 1));
+            pionJouable.add(new Cavalier(this, 7, 1));
             pionJouable.add(new Cavalier(this, 7, 6));
             pionJouable.add(new Tour(this, 7, 0));
             pionJouable.add(new Tour(this, 7, 7));
@@ -51,18 +51,34 @@ public class Player {
         pionPerdu = new ArrayList<>();
     }
 
-    public List<Piece> getPionJouable (){
+    public int getNum() {
+        return num;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNbCoups() {
+        return nbCoups;
+    }
+
+    public List<Piece> getPionJouable() {
         return pionJouable;
     }
 
-    public String getColor (){
+    public String getColor() {
         return color;
     }
 
-    public String toString(){
+    public void addCoup() {
+        nbCoups++;
+    }
+
+    public String toString() {
         return color + "\nPlayer : " + num + "\n" +
                 "Name : " + name + "\n" +
-                "Nombre de coup(s) : " +  nbCoups + "\n" +
+                "Nombre de coup(s) : " + nbCoups + "\n" +
                 "Nombre de pion(s) perdu(s) : " + pionPerdu.size() +
                 "\u001B[0m \n";
     }
