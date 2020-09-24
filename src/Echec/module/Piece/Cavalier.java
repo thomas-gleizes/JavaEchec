@@ -8,7 +8,7 @@ import java.util.List;
 public class Cavalier extends Piece {
 
     public Cavalier(Player p, int x, int y) {
-        super(p, x, y, 'C');
+        super(p, x, y, 'C', "Cavalier");
     }
 
     @Override

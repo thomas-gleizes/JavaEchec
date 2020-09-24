@@ -28,7 +28,7 @@ public class Player {
             }
             pionJouable.add(new Cavalier(this, 0, 1));
             pionJouable.add(new Cavalier(this, 0, 6));
-            pionJouable.add(new Tour(this, 0, 0));
+            pionJouable.add(new Tour(this, 5, 2));
             pionJouable.add(new Tour(this, 0, 7));
             pionJouable.add(new Fou(this, 0, 2));
             pionJouable.add(new Fou(this, 0, 5));
@@ -39,6 +39,9 @@ public class Player {
             for (int i = 0; i < 8; i++) {
                 pionJouable.add(new Pion(this, 6, i));
             }
+            pionJouable.add(new Pion(this, 5, 1));
+            pionJouable.add(new Pion(this, 2, 2));
+            pionJouable.add(new Pion(this, 5, 6));
             pionJouable.add(new Cavalier(this, 7, 1));
             pionJouable.add(new Cavalier(this, 7, 6));
             pionJouable.add(new Tour(this, 7, 0));

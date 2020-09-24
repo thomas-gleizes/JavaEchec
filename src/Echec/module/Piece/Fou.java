@@ -8,7 +8,7 @@ import java.util.List;
 public class Fou extends Piece {
 
     public Fou(Player p, int x, int y) {
-        super(p, x, y, 'F');
+        super(p, x, y, 'F', "Fou");
     }
 
     @Override

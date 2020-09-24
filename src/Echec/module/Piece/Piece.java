@@ -7,16 +7,18 @@ import java.util.List;
 
 public abstract class Piece {
 
+    private String type;
     protected Player player;
     protected int x;
     protected int y;
     private char icon;
 
-    public Piece(Player p, int x, int y, char icon) {
+    public Piece(Player p, int x, int y, char icon, String type) {
         this.player = p;
         this.x = x;
         this.y = y;
         this.icon = icon;
+        this.type = type;
     }
 
     public void moveTo(Movement m, Piece[][] bord, Player playerAdverse){
