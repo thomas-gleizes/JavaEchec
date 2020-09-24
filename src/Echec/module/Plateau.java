@@ -83,6 +83,7 @@ public class Plateau {
                 else str.append(" ").append(bord[i][j].getIcon()).append(" ");
                 if (j != 7) str.append("|");
             }
+            str.append(" ").append(i);
             if (i != 7) str.append("\n  -------------------------------\n");
         }
         str.append("\n").append(p2.toString());

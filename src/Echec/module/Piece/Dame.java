@@ -15,12 +15,12 @@ public class Dame extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
-        List<Piece> pieceJouable = player.getPieceJouable();
+        List<Piece> piecesJouable = player.getPieceJouable();
 
         //TODO Ajouter la partie du Fou
-
-        for (int i = x + 1; i < 8; i++) {
-            if (!pieceJouable.contains(bord[i][y])) {
+        int i;
+        for (i = x + 1; i < 8; i++) {
+            if (!piecesJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
                 if (bord[i][y] != null){
                     break;
@@ -28,22 +28,22 @@ public class Dame extends Piece {
             } else break;
         }
 
-        for (int i = y + 1; i < 8; i++) {
-            if (!pieceJouable.contains(bord[x][i])) {
+        for (i = y + 1; i < 8; i++) {
+            if (!piecesJouable.contains(bord[x][i])) {
                 listMovement.add(new Movement(this, getX(), getY(), x, i));
                 if (bord[x][i] != null) break;
             } else break;
         }
 
-        for (int i = x - 1; i >= 0; i--) {
-            if (!pieceJouable.contains(bord[i][y])) {
+        for (i = x - 1; i >= 0; i--) {
+            if (!piecesJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
                 if (bord[i][y] != null) break;
             } else break;
         }
 
-        for (int i = y - 1; i >= 0; i--) {
-            if (!pieceJouable.contains(bord[x][i])) {
+        for (i = y - 1; i >= 0; i--) {
+            if (!piecesJouable.contains(bord[x][i])) {
                 listMovement.add(new Movement(this, getX(), getY(), x, i));
                 if (bord[x][i] != null) break;
             } else break;

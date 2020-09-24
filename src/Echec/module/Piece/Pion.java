@@ -39,7 +39,7 @@ public class Pion extends Piece {
             }
             if (y != 0) if (!player.getPieceJouable().contains(bord[x + tx][y - 1])) {
                 if (bord[x + tx][y - 1] != null) {
-                    listMovement.add(new Movement(this, x, y, x + tx, y + 1));
+                    listMovement.add(new Movement(this, x, y, x + tx, y - 1));
                 }
             }
             if (!player.getPieceJouable().contains(bord[x + tx][y])) {

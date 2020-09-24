@@ -39,7 +39,7 @@ public class Movement {
 
     @Override
     public String toString() {
-        return "{" + Character.toString(dy + 65) + dx + "}";
+        return Character.toString(dy + 65) + dx;
     }
 
     public int getDx() {

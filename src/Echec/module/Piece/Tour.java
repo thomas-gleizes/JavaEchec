@@ -2,7 +2,6 @@ package Echec.module.Piece;
 
 import Echec.module.Movement;
 import Echec.module.Player;
-import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +21,7 @@ public class Tour extends Piece {
         for (int i = x + 1; i < 8; i++) {
             if (!pieceJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
-                if (bord[i][y] != null){
-                    break;
-                }
+                if (bord[i][y] != null) break;
             } else break;
         }
 
