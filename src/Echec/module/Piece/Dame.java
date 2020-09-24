@@ -5,10 +5,10 @@ import Echec.module.Player;
 
 import java.util.List;
 
-public class Tour extends Piece {
+public class Dame extends Piece {
 
-    public Tour(Player p, int x, int y) {
-        super(p, x, y, 'T');
+    public Dame(Player p, int x, int y) {
+        super(p, x, y, 'D');
     }
 
     @Override

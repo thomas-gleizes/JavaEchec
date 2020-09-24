@@ -1,6 +1,9 @@
 package Echec.module.Piece;
 
+import Echec.module.Movement;
 import Echec.module.Player;
+
+import java.util.List;
 
 public abstract class Piece {
 
@@ -15,6 +18,17 @@ public abstract class Piece {
         this.y = y;
         this.icon = icon;
     }
+
+    public void moveTo(Movement m, Piece[][] bord, Player playerAdverse){
+        player.addCoup();
+        if (bord[m.getTx()][m.getTy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getTx()][m.getTy()]);
+        bord[x][y] = null;
+        x = m.getTx();
+        y = m.getTy();
+        bord[m.getTx()][m.getTy()] = this;
+    }
+
+    public abstract List<Movement> getMovePossible(Piece[][] bord);
 
     public int getX() {
         return x;

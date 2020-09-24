@@ -9,19 +9,20 @@ public class Player {
 
     private final int num;
     private final String name;
-    private int nbCoups;
     private final String color;
     private final List<Piece> pionJouable;
-    private final List<Piece> pionPerdu;
+    private List<Movement> listMovement;
+    private int nbCoups;
 
     public Player(int num, String name) {
         this.num = num;
         this.name = name;
         nbCoups = 0;
         pionJouable = new ArrayList<>();
+        listMovement = new ArrayList<>();
 
         if (num == 1) {
-            color = "\u001B[31m";
+            color = "\u001B[32m";
             for (int i = 0; i < 8; i++) {
                 pionJouable.add(new Pion(this, 1, i));
             }
@@ -31,10 +32,10 @@ public class Player {
             pionJouable.add(new Tour(this, 0, 7));
             pionJouable.add(new Fou(this, 0, 2));
             pionJouable.add(new Fou(this, 0, 5));
-            pionJouable.add(new Reine(this, 0, 3));
+            pionJouable.add(new Dame(this, 0, 3));
             pionJouable.add(new Roi(this, 0, 4));
         } else {
-            color = "\u001B[32m";
+            color = "\u001B[31m";
             for (int i = 0; i < 8; i++) {
                 pionJouable.add(new Pion(this, 6, i));
             }
@@ -44,11 +45,10 @@ public class Player {
             pionJouable.add(new Tour(this, 7, 7));
             pionJouable.add(new Fou(this, 7, 2));
             pionJouable.add(new Fou(this, 7, 5));
-            pionJouable.add(new Reine(this, 7, 3));
+            pionJouable.add(new Dame(this, 7, 3));
             pionJouable.add(new Roi(this, 7, 4));
         }
 
-        pionPerdu = new ArrayList<>();
     }
 
     public int getNum() {
@@ -63,7 +63,7 @@ public class Player {
         return nbCoups;
     }
 
-    public List<Piece> getPionJouable() {
+    public List<Piece> getPieceJouable() {
         return pionJouable;
     }
 
@@ -79,7 +79,8 @@ public class Player {
         return color + "\nPlayer : " + num + "\n" +
                 "Name : " + name + "\n" +
                 "Nombre de coup(s) : " + nbCoups + "\n" +
-                "Nombre de pion(s) perdu(s) : " + pionPerdu.size() +
+                "Nombre de pion(s) perdu(s) : " + (16 - pionJouable.size()) +
                 "\u001B[0m \n";
     }
+
 }
