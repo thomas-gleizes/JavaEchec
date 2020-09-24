@@ -23,11 +23,11 @@ public abstract class Piece {
 
     public void moveTo(Movement m, Piece[][] bord, Player playerAdverse){
         player.addCoup();
-        if (bord[m.getTx()][m.getTy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getTx()][m.getTy()]);
+        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getDx()][m.getDy()]);
         bord[x][y] = null;
-        x = m.getTx();
-        y = m.getTy();
-        bord[m.getTx()][m.getTy()] = this;
+        x = m.getDx();
+        y = m.getDy();
+        bord[m.getDx()][m.getDy()] = this;
     }
 
     public abstract List<Movement> getMovePossible(Piece[][] bord);

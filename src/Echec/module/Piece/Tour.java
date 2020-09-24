@@ -51,4 +51,5 @@ public class Tour extends Piece {
 
         return listMovement;
     }
+
 }

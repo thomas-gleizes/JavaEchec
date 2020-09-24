@@ -44,7 +44,8 @@ public class Plateau {
                         if (index != -1) {
                             Piece p = currentPlayer.getPieceJouable().get(index);
                             List<Movement> listMovementPossible = p.getMovePossible(bord);
-                            if (listMovementPossible != null) {
+
+                            if (listMovementPossible != null && !listMovementPossible.isEmpty()) {
                                 boolean doMove = true;
                                 while (doMove) {
                                     System.out.println("Movement Possible : " + listMovementPossible);
@@ -83,9 +84,10 @@ public class Plateau {
                 else str.append(" ").append(bord[i][j].getIcon()).append(" ");
                 if (j != 7) str.append("|");
             }
+            str.append(" ").append(i);
             if (i != 7) str.append("\n  -------------------------------\n");
         }
-        str.append("\n").append(p2.toString());
+        str.append("\n   A   B   C   D   E   F   G   H\n").append(p2.toString());
         return str.toString();
     }
 
