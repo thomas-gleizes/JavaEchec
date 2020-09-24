@@ -9,7 +9,7 @@ import java.util.List;
 public class Pion extends Piece {
 
     public Pion(Player p, int x, int y) {
-        super(p, x, y, 'O', "Pion");
+        super(p, x, y, 'O');
     }
 
     @Override

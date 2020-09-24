@@ -60,6 +60,7 @@ public class Plateau {
                                             choice = false;
                                             System.out.println("Mouvement Fait");
                                             System.out.println(this);
+                                            game = !isFinish();
                                             break;
                                         }
                                     }
@@ -69,7 +70,12 @@ public class Plateau {
                     } else System.out.println("Coordonnée invalid");
                 }
             }
+            System.out.println("Fin de la partie !");
         }
+    }
+
+    public boolean isFinish(){
+        return false;
     }
 
     @Override
@@ -86,7 +92,7 @@ public class Plateau {
             str.append(" ").append(i);
             if (i != 7) str.append("\n  -------------------------------\n");
         }
-        str.append("\n").append(p2.toString());
+        str.append("\n   A   B   C   D   E   F   G   H\n").append(p2.toString());
         return str.toString();
     }
 

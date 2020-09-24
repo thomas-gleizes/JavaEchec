@@ -9,7 +9,7 @@ import java.util.List;
 public class Tour extends Piece {
 
     public Tour(Player p, int x, int y) {
-        super(p, x, y, 'T', "Tour");
+        super(p, x, y, 'T');
     }
 
     @Override
