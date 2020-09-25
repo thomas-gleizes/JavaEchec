@@ -32,7 +32,7 @@ public class Player {
             pionJouable.add(new Dame(this, 0, 3));
             pionJouable.add(new Roi(this, 0, 4));
             for (int i = 0; i < 8; i++) {
-                //pionJouable.add(new Pion(this, 1, i));
+                pionJouable.add(new Pion(this, 1, i));
             }
         } else {
             color = "\u001B[31m";
@@ -45,7 +45,7 @@ public class Player {
             pionJouable.add(new Dame(this, 7, 3));
             pionJouable.add(new Roi(this, 7, 4));
             for (int i = 0; i < 8; i++) {
-                //pionJouable.add(new Pion(this, 6, i));
+                pionJouable.add(new Pion(this, 6, i));
             }
         }
 
@@ -73,6 +73,12 @@ public class Player {
 
     public void addCoup() {
         nbCoups++;
+    }
+
+    public boolean haveKing(){
+        for (Piece p : pionJouable)
+            if (p.equals(new Roi(this, p.getX(), p.getY()))) return true;
+        return false;
     }
 
     public String toString() {

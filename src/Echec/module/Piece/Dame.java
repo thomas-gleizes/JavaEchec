@@ -17,8 +17,8 @@ public class Dame extends Piece {
         List<Movement> listMovement = new ArrayList<>();
         List<Piece> piecesJouable = player.getPieceJouable();
 
-        //TODO Ajouter la partie du Fou
-        int i;
+        int i, j;
+
         for (i = x + 1; i < 8; i++) {
             if (!piecesJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
@@ -47,6 +47,38 @@ public class Dame extends Piece {
                 listMovement.add(new Movement(this, getX(), getY(), x, i));
                 if (bord[x][i] != null) break;
             } else break;
+        }
+
+        for (i = x + 1, j = y + 1; i < 8; i++, j++){
+            if (j >= 8) break;
+            if (!piecesJouable.contains(bord[i][j])){
+                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                if (bord[i][j] != null) break;
+            }
+        }
+
+        for (i = x + 1, j = y - 1; i < 8; i++, j--){
+            if (j < 0) break;
+            if (!piecesJouable.contains(bord[i][j])){
+                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                if (bord[i][j] != null) break;
+            }
+        }
+
+        for (i = x - 1, j = y - 1; i >= 0; i--, j--){
+            if (j < 0) break;
+            if (!piecesJouable.contains(bord[i][j])){
+                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                if (bord[i][j] != null) break;
+            }
+        }
+
+        for (i = x - 1, j = y + 1; i >= 0; i--, j++){
+            if (j >= 8) break;
+            if (!piecesJouable.contains(bord[i][j])){
+                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                if (bord[i][j] != null) break;
+            }
         }
 
         return listMovement;

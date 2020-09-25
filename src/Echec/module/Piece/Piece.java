@@ -4,6 +4,7 @@ import Echec.module.Movement;
 import Echec.module.Player;
 
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Piece {
 
@@ -40,6 +41,22 @@ public abstract class Piece {
 
     public String getIcon() {
         return player.getColor() + icon + "\u001B[0m";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piece piece = (Piece) o;
+        return x == piece.x &&
+                y == piece.y &&
+                icon == piece.icon &&
+                Objects.equals(player, piece.player);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(player, x, y, icon);
     }
 
     public String toString() {

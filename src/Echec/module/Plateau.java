@@ -1,6 +1,7 @@
 package Echec.module;
 
 import Echec.module.Piece.Piece;
+import Echec.module.Piece.Roi;
 
 import java.util.List;
 import java.util.Scanner;
@@ -34,9 +35,9 @@ public class Plateau {
             while (game) {
                 currentPlayer = currentPlayer.equals(p2) ? p1 : p2;
                 boolean choice = true;
-                while (choice){
+                while (choice) {
                     System.out.print("Choix du" + currentPlayer.getColor() + " Joueur " + currentPlayer.getNum() + "\u001B[0m : ");
-                    String command = scan.nextLine();
+                    String command = scan.nextLine() + "";
                     ty = command.charAt(0) - 65;
                     tx = command.charAt(1) - 48;
                     if (tx >= 0 && tx <= 7 && ty >= 0 && ty <= 7 && command.length() == 2) {
@@ -74,7 +75,14 @@ public class Plateau {
         }
     }
 
-    public boolean isFinish(){
+    public boolean isFinish() {
+        if (!p1.haveKing()){
+            System.out.println("GG " + p2.getName());
+            return true;
+        } else if (!p2.haveKing()){
+            System.out.println("GG " + p1.getName());
+            return true;
+        }
         return false;
     }
 
