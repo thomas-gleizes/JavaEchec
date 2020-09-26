@@ -15,7 +15,7 @@ public class Fou extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
-        List<Piece> piecesJouable = player.getPieceJouable();
+        List<Piece> piecesJouable = player.getListPiece();
 
         int i, j;
 

@@ -10,7 +10,7 @@ public class Player {
     private final int num;
     private final String name;
     private final String color;
-    private final List<Piece> pionJouable;
+    private final List<Piece> listPiece;
     private List<Movement> listMovement;
     private int nbCoups;
 
@@ -18,34 +18,34 @@ public class Player {
         this.num = num;
         this.name = name;
         nbCoups = 0;
-        pionJouable = new ArrayList<>();
+        listPiece = new ArrayList<>();
         listMovement = new ArrayList<>();
 
         if (num == 1) {
             color = "\u001B[32m";
-            pionJouable.add(new Cavalier(this, 0, 1));
-            pionJouable.add(new Cavalier(this, 0, 6));
-            pionJouable.add(new Tour(this, 0, 0));
-            pionJouable.add(new Tour(this, 0, 7));
-            pionJouable.add(new Fou(this, 0, 2));
-            pionJouable.add(new Fou(this, 0, 5));
-            pionJouable.add(new Dame(this, 0, 3));
-            pionJouable.add(new Roi(this, 0, 4));
+            listPiece.add(new Cavalier(this, 0, 1));
+            listPiece.add(new Cavalier(this, 0, 6));
+            listPiece.add(new Tour(this, 0, 0));
+            listPiece.add(new Tour(this, 0, 7));
+            listPiece.add(new Fou(this, 0, 2));
+            listPiece.add(new Fou(this, 0, 5));
+            listPiece.add(new Dame(this, 0, 3));
+            listPiece.add(new Roi(this, 0, 4));
             for (int i = 0; i < 8; i++) {
-                pionJouable.add(new Pion(this, 1, i));
+                listPiece.add(new Pion(this, 1, i));
             }
         } else {
             color = "\u001B[31m";
-            pionJouable.add(new Cavalier(this, 7, 1));
-            pionJouable.add(new Cavalier(this, 7, 6));
-            pionJouable.add(new Tour(this, 7, 0));
-            pionJouable.add(new Tour(this, 7, 7));
-            pionJouable.add(new Fou(this, 7, 2));
-            pionJouable.add(new Fou(this, 7, 5));
-            pionJouable.add(new Dame(this, 7, 3));
-            pionJouable.add(new Roi(this, 7, 4));
+            listPiece.add(new Cavalier(this, 7, 1));
+            listPiece.add(new Cavalier(this, 7, 6));
+            listPiece.add(new Tour(this, 7, 0));
+            listPiece.add(new Tour(this, 7, 7));
+            listPiece.add(new Fou(this, 7, 2));
+            listPiece.add(new Fou(this, 7, 5));
+            listPiece.add(new Dame(this, 7, 3));
+            listPiece.add(new Roi(this, 7, 4));
             for (int i = 0; i < 8; i++) {
-                pionJouable.add(new Pion(this, 6, i));
+                listPiece.add(new Pion(this, 6, i));
             }
         }
 
@@ -63,8 +63,8 @@ public class Player {
         return nbCoups;
     }
 
-    public List<Piece> getPieceJouable() {
-        return pionJouable;
+    public List<Piece> getListPiece() {
+        return listPiece;
     }
 
     public String getColor() {
@@ -76,9 +76,21 @@ public class Player {
     }
 
     public boolean haveKing(){
-        for (Piece p : pionJouable)
+        for (Piece p : listPiece)
             if (p.equals(new Roi(this, p.getX(), p.getY()))) return true;
         return false;
+    }
+
+    public void addMovement(Movement m){
+        listMovement.add(m);
+    }
+
+    public List<Piece> getPionJouable (Piece[][] bord){
+        List<Piece> pionJouable = new ArrayList<>();
+        for (Piece p : listPiece){
+            if (p.getMovePossible(bord).size() > 0) pionJouable.add(p);
+        }
+        return pionJouable;
     }
 
     @Override
@@ -86,7 +98,7 @@ public class Player {
         return color + "\nPlayer : " + num + "\n" +
                 "Name : " + name + "\n" +
                 "Nombre de coup(s) : " + nbCoups + "\n" +
-                "Nombre de pion(s) perdu(s) : " + (16 - pionJouable.size()) +
+                "Nombre de pion(s) perdu(s) : " + (16 - listPiece.size()) +
                 "\u001B[0m \n";
     }
 

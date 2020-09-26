@@ -15,7 +15,7 @@ public class Tour extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
-        List<Piece> pieceJouable = player.getPieceJouable();
+        List<Piece> pieceJouable = player.getListPiece();
 
         for (int i = x + 1; i < 8; i++) {
             if (!pieceJouable.contains(bord[i][y])) {

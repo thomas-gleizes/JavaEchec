@@ -15,7 +15,7 @@ public class Cavalier extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
-        List<Piece> piecesJouable = player.getPieceJouable();
+        List<Piece> piecesJouable = player.getListPiece();
 
         int[][] condition = new int[][] {{2, 1}, {1, 2}, {-1, 2}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}, {2, -1}};
 

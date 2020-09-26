@@ -33,17 +33,17 @@ public class Pion extends Piece {
             listMovement.add(new Movement(this, x, y, x + tx2, y));
         } else {
             int tx = numPlayer == 2 ? -1 : 1;
-            if (y != 7) if (!player.getPieceJouable().contains(bord[x + tx][y + 1])) {
+            if (y != 7) if (!player.getListPiece().contains(bord[x + tx][y + 1])) {
                 if (bord[x + tx][y + 1] != null) {
                     listMovement.add(new Movement(this, x, y, x + tx, y + 1));
                 }
             }
-            if (y != 0) if (!player.getPieceJouable().contains(bord[x + tx][y - 1])) {
+            if (y != 0) if (!player.getListPiece().contains(bord[x + tx][y - 1])) {
                 if (bord[x + tx][y - 1] != null) {
                     listMovement.add(new Movement(this, x, y, x + tx, y - 1));
                 }
             }
-            if (!player.getPieceJouable().contains(bord[x + tx][y])) {
+            if (!player.getListPiece().contains(bord[x + tx][y])) {
                 listMovement.add(new Movement(this, x, y, x + tx, y));
             }
         }

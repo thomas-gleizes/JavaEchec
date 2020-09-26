@@ -15,7 +15,7 @@ public class Roi extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
-        List<Piece> piecesJouable = player.getPieceJouable();
+        List<Piece> piecesJouable = player.getListPiece();
 
         int[][] condition = new int[][] {{1, 1}, {1, 0}, {0, 1}, {0, -1}, {-1, 0}, {-1, -1}, {1, -1}, {-1, 0}};
 

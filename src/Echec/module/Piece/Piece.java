@@ -36,7 +36,7 @@ public abstract class Piece {
 
     public void moveTo(Movement m, Piece[][] bord, Player playerAdverse) {
         player.addCoup();
-        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getDx()][m.getDy()]);
+        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getListPiece().remove(bord[m.getDx()][m.getDy()]);
         bord[x][y] = null;
         x = m.getDx();
         y = m.getDy();

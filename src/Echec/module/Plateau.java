@@ -1,7 +1,6 @@
 package Echec.module;
 
 import Echec.module.Piece.Piece;
-import Echec.module.Piece.Roi;
 
 import java.util.List;
 import java.util.Scanner;
@@ -17,10 +16,10 @@ public class Plateau {
         this.p1 = new Player(1, namePlayer1);
         this.p2 = new Player(2, namePlayer2);
 
-        for (Piece p : p1.getPieceJouable()) {
+        for (Piece p : p1.getListPiece()) {
             bord[p.getX()][p.getY()] = p;
         }
-        for (Piece p : p2.getPieceJouable()) {
+        for (Piece p : p2.getListPiece()) {
             bord[p.getX()][p.getY()] = p;
         }
     }
@@ -41,9 +40,9 @@ public class Plateau {
                     ty = command.charAt(0) - 65;
                     tx = command.charAt(1) - 48;
                     if (tx >= 0 && tx <= 7 && ty >= 0 && ty <= 7 && command.length() == 2) {
-                        int index = currentPlayer.getPieceJouable().indexOf(bord[tx][ty]);
+                        int index = currentPlayer.getListPiece().indexOf(bord[tx][ty]);
                         if (index != -1) {
-                            Piece p = currentPlayer.getPieceJouable().get(index);
+                            Piece p = currentPlayer.getListPiece().get(index);
                             List<Movement> listMovementPossible = p.getMovePossible(bord);
                             if (listMovementPossible != null && !listMovementPossible.isEmpty()) {
                                 boolean doMove = true;
@@ -61,6 +60,7 @@ public class Plateau {
                                             choice = false;
                                             System.out.println("Mouvement Fait");
                                             System.out.println(this);
+
                                             game = !isFinish();
                                             break;
                                         }
