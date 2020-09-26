@@ -19,7 +19,7 @@ public class Fou extends Piece {
 
         int i, j;
 
-        for (i = x, j = y; i < 8; i++, j++){
+        for (i = x + 1, j = y + 1; i < 8; i++, j++){
             if (j >= 8) break;
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
@@ -27,7 +27,7 @@ public class Fou extends Piece {
             } else break;
         }
 
-        for (i = x, j = y; i < 8; i++, j--){
+        for (i = x + 1, j = y - 1; i < 8; i++, j--){
             if (j < 0) break;
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
@@ -35,7 +35,7 @@ public class Fou extends Piece {
             } else break;
         }
 
-        for (i = x, j = y; i >= 0; i--, j--){
+        for (i = x - 1, j = y - 1; i >= 0; i--, j--){
             if (j < 0) break;
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
@@ -43,7 +43,7 @@ public class Fou extends Piece {
             } else break;
         }
 
-        for (i = x, j = y; i >= 0; i--, j++){
+        for (i = x - 1, j = y + 1; i >= 0; i--, j++){
             if (j >= 8) break;
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));

@@ -58,6 +58,7 @@ public class Plateau {
                                             else p.moveTo(move, bord, p1);
                                             doMove = false;
                                             choice = false;
+                                            currentPlayer.addMovement(m);
                                             System.out.println("Mouvement Fait");
                                             System.out.println(this);
 
@@ -72,6 +73,7 @@ public class Plateau {
                 }
             }
             System.out.println("Fin de la partie !");
+
         }
     }
 
