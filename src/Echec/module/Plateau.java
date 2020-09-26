@@ -66,7 +66,7 @@ public class Plateau {
                                         }
                                     }
                                 }
-                            }
+                            } else System.out.println("Cette piece ne peux pas bougé !");
                         } else System.out.println("Emplacement incorect !");
                     } else System.out.println("Coordonnée invalid");
                 }
