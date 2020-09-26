@@ -52,7 +52,7 @@ public class Dame extends Piece {
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
                 if (bord[i][j] != null) break;
-            }
+            } else break;
         }
 
         for (i = x + 1, j = y - 1; i < 8; i++, j--){
@@ -60,7 +60,7 @@ public class Dame extends Piece {
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
                 if (bord[i][j] != null) break;
-            }
+            } else break;
         }
 
         for (i = x - 1, j = y - 1; i >= 0; i--, j--){
@@ -68,7 +68,7 @@ public class Dame extends Piece {
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
                 if (bord[i][j] != null) break;
-            }
+            } else break;
         }
 
         for (i = x - 1, j = y + 1; i >= 0; i--, j++){
@@ -76,7 +76,7 @@ public class Dame extends Piece {
             if (!piecesJouable.contains(bord[i][j])){
                 listMovement.add(new Movement(this, getX(), getY(), i, j));
                 if (bord[i][j] != null) break;
-            }
+            } else break;
         }
 
         return listMovement;
