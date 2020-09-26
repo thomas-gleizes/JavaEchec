@@ -15,8 +15,10 @@ public class Pion extends Piece {
     @Override
     public List<Movement> getMovePossible(Piece[][] bord) {
         List<Movement> listMovement = new ArrayList<>();
+
         int numPlayer = player.getNum();
         if (x == 0 || x == 7) return listMovement;
+
         if (player.getNbCoups() == 0) {
             int tx1;
             int tx2;
@@ -30,7 +32,6 @@ public class Pion extends Piece {
             listMovement.add(new Movement(this, x, y, x + tx1, y));
             listMovement.add(new Movement(this, x, y, x + tx2, y));
         } else {
-            System.out.println("dedans");
             int tx = numPlayer == 2 ? -1 : 1;
             if (y != 7) if (!player.getPieceJouable().contains(bord[x + tx][y + 1])) {
                 if (bord[x + tx][y + 1] != null) {
@@ -46,10 +47,7 @@ public class Pion extends Piece {
                 listMovement.add(new Movement(this, x, y, x + tx, y));
             }
         }
-
-
         return listMovement;
     }
-
 
 }

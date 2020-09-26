@@ -22,9 +22,7 @@ public class Dame extends Piece {
         for (i = x + 1; i < 8; i++) {
             if (!piecesJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
-                if (bord[i][y] != null){
-                    break;
-                }
+                if (bord[i][y] != null) break;
             } else break;
         }
 
@@ -83,4 +81,5 @@ public class Dame extends Piece {
 
         return listMovement;
     }
+
 }

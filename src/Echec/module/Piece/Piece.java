@@ -20,17 +20,6 @@ public abstract class Piece {
         this.icon = icon;
     }
 
-    public void moveTo(Movement m, Piece[][] bord, Player playerAdverse){
-        player.addCoup();
-        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getDx()][m.getDy()]);
-        bord[x][y] = null;
-        x = m.getDx();
-        y = m.getDy();
-        bord[m.getDx()][m.getDy()] = this;
-    }
-
-    public abstract List<Movement> getMovePossible(Piece[][] bord);
-
     public int getX() {
         return x;
     }
@@ -41,6 +30,17 @@ public abstract class Piece {
 
     public String getIcon() {
         return player.getColor() + icon + "\u001B[0m";
+    }
+
+    public abstract List<Movement> getMovePossible(Piece[][] bord);
+
+    public void moveTo(Movement m, Piece[][] bord, Player playerAdverse) {
+        player.addCoup();
+        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getPieceJouable().remove(bord[m.getDx()][m.getDy()]);
+        bord[x][y] = null;
+        x = m.getDx();
+        y = m.getDy();
+        bord[m.getDx()][m.getDy()] = this;
     }
 
     @Override
@@ -59,6 +59,7 @@ public abstract class Piece {
         return Objects.hash(player, x, y, icon);
     }
 
+    @Override
     public String toString() {
         return "Player" + this.player.getNum() + " : " + this.player.getName() + "\n" +
                 "X : " + this.x + "\nY : " + this.y;

@@ -81,6 +81,7 @@ public class Player {
         return false;
     }
 
+    @Override
     public String toString() {
         return color + "\nPlayer : " + num + "\n" +
                 "Name : " + name + "\n" +

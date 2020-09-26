@@ -53,4 +53,5 @@ public class Fou extends Piece {
 
         return listMovement;
     }
+
 }

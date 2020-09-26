@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Roi extends Piece {
+
     public Roi(Player p, int x, int y) {
         super(p, x, y, 'R');
     }
@@ -30,4 +31,5 @@ public class Roi extends Piece {
 
         return listMovement;
     }
+
 }

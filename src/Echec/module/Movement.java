@@ -20,6 +20,14 @@ public class Movement {
         this.dy = ty;
     }
 
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,14 +48,6 @@ public class Movement {
     @Override
     public String toString() {
         return Character.toString(dy + 65) + dx;
-    }
-
-    public int getDx() {
-        return dx;
-    }
-
-    public int getDy() {
-        return dy;
     }
 
 }

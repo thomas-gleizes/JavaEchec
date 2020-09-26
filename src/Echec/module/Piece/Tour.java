@@ -17,7 +17,6 @@ public class Tour extends Piece {
         List<Movement> listMovement = new ArrayList<>();
         List<Piece> pieceJouable = player.getPieceJouable();
 
-
         for (int i = x + 1; i < 8; i++) {
             if (!pieceJouable.contains(bord[i][y])) {
                 listMovement.add(new Movement(this, getX(), getY(), i, y));
@@ -25,7 +24,7 @@ public class Tour extends Piece {
             } else break;
         }
 
-       for (int i = y + 1; i < 8; i++) {
+        for (int i = y + 1; i < 8; i++) {
             if (!pieceJouable.contains(bord[x][i])) {
                 listMovement.add(new Movement(this, getX(), getY(), x, i));
                 if (bord[x][i] != null) break;
