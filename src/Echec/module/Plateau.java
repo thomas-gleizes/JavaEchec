@@ -5,7 +5,7 @@ import Echec.module.Piece.Piece;
 import java.util.List;
 import java.util.Scanner;
 
-public class Plateau {
+public class Plateau implements Cloneable {
 
     private Piece[][] bord;
     private Player p1;
@@ -61,7 +61,6 @@ public class Plateau {
                                             currentPlayer.addMovement(m);
                                             System.out.println("Mouvement Fait");
                                             System.out.println(this);
-
                                             game = !isFinish();
                                             break;
                                         }
@@ -73,19 +72,26 @@ public class Plateau {
                 }
             }
             System.out.println("Fin de la partie !");
-
         }
     }
 
     public boolean isFinish() {
         if (!p1.haveKing()){
             System.out.println("GG " + p2.getName());
+            System.out.println(displayStoryMovement());
             return true;
         } else if (!p2.haveKing()){
             System.out.println("GG " + p1.getName());
+            System.out.println(displayStoryMovement());
             return true;
         }
         return false;
+    }
+
+    public String displayStoryMovement() {
+        return "Historique des movement : \n" +
+                p1.getColor() + "Player 1 [" + p1.displayListLastMovement(p1.getListMovement().size() - 1) + "] \n" +
+                p2.getColor() + "Player 2 [" + p2.displayListLastMovement(p1.getListMovement().size() - 1) + "] \u001B[0m \n";
     }
 
     @Override

@@ -50,4 +50,8 @@ public class Movement {
         return Character.toString(dy + 65) + dx;
     }
 
+    public String displayForList(){
+        return "{" + Character.toString(y + 65) + x +  " => " + Character.toString(dy + 65) + dx + "}";
+    }
+
 }
