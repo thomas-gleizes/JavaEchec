@@ -17,7 +17,7 @@ public class Roi extends Piece {
         List<Movement> listMovement = new ArrayList<>();
         List<Piece> piecesJouable = player.getListPiece();
 
-        int[][] condition = new int[][] {{1, 1}, {1, 0}, {0, 1}, {0, -1}, {-1, 0}, {-1, -1}, {1, -1}, {-1, 0}};
+        int[][] condition = new int[][] {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};
 
         for (int[] c : condition){
             int dx = c[0] + x;
