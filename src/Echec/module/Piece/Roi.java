@@ -24,7 +24,7 @@ public class Roi extends Piece {
             int dy = c[1] + y;
             if (((dx >= 0) && (dx <= 7)) && ((dy >= 0) && (dy <= 7))){
                 if (!piecesJouable.contains(bord[dx][dy])){
-                    listMovement.add(new Movement(this, x, y, dx, dy));
+                    listMovement.add(new Movement(this, x, y, dx, dy, bord[dx][dy]));
                 }
             }
         }

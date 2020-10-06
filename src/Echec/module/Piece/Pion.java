@@ -29,23 +29,20 @@ public class Pion extends Piece {
                 tx1 = 1;
                 tx2 = 2;
             }
-            listMovement.add(new Movement(this, x, y, x + tx1, y));
-            listMovement.add(new Movement(this, x, y, x + tx2, y));
+            listMovement.add(new Movement(this, x, y, x + tx1, y, bord[x + tx1][y]));
+            listMovement.add(new Movement(this, x, y, x + tx2, y, bord[x + tx2][y]));
         } else {
             int tx = numPlayer == 2 ? -1 : 1;
             if (y != 7) if (!player.getListPiece().contains(bord[x + tx][y + 1])) {
-                if (bord[x + tx][y + 1] != null) {
-                    listMovement.add(new Movement(this, x, y, x + tx, y + 1));
-                }
+                if (bord[x + tx][y + 1] != null)
+                    listMovement.add(new Movement(this, x, y, x + tx, y + 1, bord[x + tx][y + 1]));
             }
             if (y != 0) if (!player.getListPiece().contains(bord[x + tx][y - 1])) {
-                if (bord[x + tx][y - 1] != null) {
-                    listMovement.add(new Movement(this, x, y, x + tx, y - 1));
-                }
+                if (bord[x + tx][y - 1] != null)
+                    listMovement.add(new Movement(this, x, y, x + tx, y - 1, bord[x + tx][y - 1]));
             }
-            if (!player.getListPiece().contains(bord[x + tx][y])) {
-                listMovement.add(new Movement(this, x, y, x + tx, y));
-            }
+            if (!player.getListPiece().contains(bord[x + tx][y]))
+                listMovement.add(new Movement(this, x, y, x + tx, y, bord[x + tx][y]));
         }
         return listMovement;
     }

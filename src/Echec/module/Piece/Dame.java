@@ -21,56 +21,56 @@ public class Dame extends Piece {
 
         for (i = x + 1; i < 8; i++) {
             if (!piecesJouable.contains(bord[i][y])) {
-                listMovement.add(new Movement(this, getX(), getY(), i, y));
+                listMovement.add(new Movement(this, getX(), getY(), i, y, bord[i][y]));
                 if (bord[i][y] != null) break;
             } else break;
         }
 
         for (i = y + 1; i < 8; i++) {
             if (!piecesJouable.contains(bord[x][i])) {
-                listMovement.add(new Movement(this, getX(), getY(), x, i));
+                listMovement.add(new Movement(this, getX(), getY(), x, i, bord[x][i]));
                 if (bord[x][i] != null) break;
             } else break;
         }
 
         for (i = x - 1; i >= 0; i--) {
             if (!piecesJouable.contains(bord[i][y])) {
-                listMovement.add(new Movement(this, getX(), getY(), i, y));
+                listMovement.add(new Movement(this, getX(), getY(), i, y, bord[i][y]));
                 if (bord[i][y] != null) break;
             } else break;
         }
 
         for (i = y - 1; i >= 0; i--) {
             if (!piecesJouable.contains(bord[x][i])) {
-                listMovement.add(new Movement(this, getX(), getY(), x, i));
+                listMovement.add(new Movement(this, getX(), getY(), x, i, bord[x][i]));
                 if (bord[x][i] != null) break;
             } else break;
         }
 
         for (i = x + 1, j = y + 1; i < 8 && j < 8; i++, j++){
             if (!piecesJouable.contains(bord[i][j])){
-                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                listMovement.add(new Movement(this, getX(), getY(), i, j, bord[i][j]));
                 if (bord[i][j] != null) break;
             } else break;
         }
 
         for (i = x + 1, j = y - 1; i < 8 && j >= 0; i++, j--){
             if (!piecesJouable.contains(bord[i][j])){
-                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                listMovement.add(new Movement(this, getX(), getY(), i, j, bord[i][j]));
                 if (bord[i][j] != null) break;
             } else break;
         }
 
         for (i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--){
             if (!piecesJouable.contains(bord[i][j])){
-                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                listMovement.add(new Movement(this, getX(), getY(), i, j, bord[i][j]));
                 if (bord[i][j] != null) break;
             } else break;
         }
 
         for (i = x - 1, j = y + 1; i >= 0 && j < 8; i--, j++){
             if (!piecesJouable.contains(bord[i][j])){
-                listMovement.add(new Movement(this, getX(), getY(), i, j));
+                listMovement.add(new Movement(this, getX(), getY(), i, j, bord[i][j]));
                 if (bord[i][j] != null) break;
             } else break;
         }

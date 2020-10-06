@@ -28,15 +28,23 @@ public abstract class Piece {
         return y;
     }
 
-    public String getIcon() {
+    public char getIcon(){
+        return icon;
+    }
+
+    public String displayIcon() {
         return player.getColor() + icon + "\u001B[0m";
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 
     public abstract List<Movement> getMovePossible(Piece[][] bord);
 
-    public void moveTo(Movement m, Piece[][] bord, Player playerAdverse) {
+    public void moveTo(Movement m, Piece[][] bord) {
         player.addCoup();
-        if (bord[m.getDx()][m.getDy()] != null) playerAdverse.getListPiece().remove(bord[m.getDx()][m.getDy()]);
+        if (bord[m.getDx()][m.getDy()] != null) m.getPieceEat().getPlayer().getListPiece().remove(bord[m.getDx()][m.getDy()]);
         bord[x][y] = null;
         x = m.getDx();
         y = m.getDy();
