@@ -6,18 +6,37 @@ import java.util.Objects;
 
 public class Movement {
 
-    private final Piece p;
+    private final Piece currentPiece;
+    private final Piece pieceEat;
     private final int x;
     private final int y;
     private final int dx;
     private final int dy;
 
-    public Movement(Piece p, int x, int y, int tx, int ty) {
-        this.p = p;
+    public Movement(Piece currentPiece, int x, int y, int tx, int ty, Piece pieceEat) {
+        this.currentPiece = currentPiece;
+        this.pieceEat = pieceEat;
         this.x = x;
         this.y = y;
         this.dx = tx;
         this.dy = ty;
+    }
+
+    public Movement(Piece currentPiece, int x, int y, int dx, int dy) {
+        this.currentPiece = currentPiece;
+        this.pieceEat = null;
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public int getDx() {
@@ -26,6 +45,14 @@ public class Movement {
 
     public int getDy() {
         return dy;
+    }
+
+    public Piece getPiece (){
+        return currentPiece;
+    }
+
+    public Piece getPieceEat (){
+        return pieceEat;
     }
 
     @Override
@@ -37,12 +64,12 @@ public class Movement {
                 y == movement.y &&
                 dx == movement.dx &&
                 dy == movement.dy &&
-                p.equals(movement.p);
+                currentPiece.equals(movement.currentPiece);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(p, x, y, dx, dy);
+        return Objects.hash(currentPiece, x, y, dx, dy);
     }
 
     @Override
@@ -51,7 +78,10 @@ public class Movement {
     }
 
     public String displayForList(){
-        return "{" + Character.toString(y + 65) + x +  " => " + Character.toString(dy + 65) + dx + "}";
+        String str = "{" + Character.toString(y + 65) + x +  " => " + Character.toString(dy + 65) + dx;
+        if (pieceEat != null)
+            str += pieceEat.getPlayer().getColor() + "(" + pieceEat.getIcon() + ")" + currentPiece.getPlayer().getColor();
+        return str + "}";
     }
 
 }

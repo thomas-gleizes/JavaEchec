@@ -101,6 +101,16 @@ public class Player {
         return pionJouable;
     }
 
+    public void rollBack (Piece[][] bord){
+        if (nbCoups > 0){
+            Movement lastMovement = listMovement.get(listMovement.size() - 1);
+            Movement rollBack = new Movement(lastMovement.getPiece(), lastMovement.getDx(), lastMovement.getDy(), lastMovement.getX(), lastMovement.getY());
+            lastMovement.getPiece().moveTo(rollBack, bord);
+            bord[rollBack.getX()][rollBack.getY()] = lastMovement.getPieceEat();
+            listMovement.remove(lastMovement);
+        }
+    }
+
     @Override
     public String toString() {
         return color + "\nPlayer : " + num + "\n" +
@@ -116,7 +126,7 @@ public class Player {
         int index, i;
         for (index = listMovement.size() - 1, i = 0; i < n && index >= 0; index--, i++) {
             str.append(listMovement.get(index).displayForList());
-            if (index != 0 && i != 1) str.append(", ");
+            if (index != 0 && i != n -1) str.append(", ");
         }
         return str.toString();
     }

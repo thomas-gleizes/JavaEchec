@@ -54,8 +54,7 @@ public class Plateau implements Cloneable {
                                     Movement move = new Movement(p, p.getX(), p.getY(), tx, ty);
                                     for (Movement m : listMovementPossible) {
                                         if (m.equals(move)) {
-                                            if (currentPlayer.equals(p1)) p.moveTo(move, bord, p2);
-                                            else p.moveTo(move, bord, p1);
+                                            p.moveTo(m, bord);
                                             doMove = false;
                                             choice = false;
                                             currentPlayer.addMovement(m);
@@ -68,6 +67,12 @@ public class Plateau implements Cloneable {
                                 }
                             } else System.out.println("Cette piece ne peux pas bougé !");
                         } else System.out.println("Emplacement incorect !");
+                    } else if (command.equals("RO")) {
+                        Player rollBackPlayer = currentPlayer.equals(p1) ? p2 : p1;
+                        if (rollBackPlayer.getNbCoups() > 0) {
+                            rollBackPlayer.rollBack(bord);
+                            System.out.println(this);
+                        } else System.out.println("Rollback Impossible");
                     } else System.out.println("Coordonnée invalid");
                 }
             }
@@ -76,11 +81,11 @@ public class Plateau implements Cloneable {
     }
 
     public boolean isFinish() {
-        if (!p1.haveKing()){
+        if (!p1.haveKing()) {
             System.out.println("GG " + p2.getName());
             System.out.println(displayStoryMovement());
             return true;
-        } else if (!p2.haveKing()){
+        } else if (!p2.haveKing()) {
             System.out.println("GG " + p1.getName());
             System.out.println(displayStoryMovement());
             return true;
@@ -90,8 +95,8 @@ public class Plateau implements Cloneable {
 
     public String displayStoryMovement() {
         return "Historique des movement : \n" +
-                p1.getColor() + "Player 1 [" + p1.displayListLastMovement(p1.getListMovement().size() - 1) + "] \n" +
-                p2.getColor() + "Player 2 [" + p2.displayListLastMovement(p1.getListMovement().size() - 1) + "] \u001B[0m \n";
+                p1.getColor() + "Player 1 [" + p1.displayListLastMovement(p1.getListMovement().size()) + "] \n" +
+                p2.getColor() + "Player 2 [" + p2.displayListLastMovement(p1.getListMovement().size()) + "] \u001B[0m \n";
     }
 
     @Override
@@ -102,7 +107,7 @@ public class Plateau implements Cloneable {
             str.append(i).append(" ");
             for (int j = 0; j < 8; j++) {
                 if (bord[i][j] == null) str.append("   ");
-                else str.append(" ").append(bord[i][j].getIcon()).append(" ");
+                else str.append(" ").append(bord[i][j].displayIcon()).append(" ");
                 if (j != 7) str.append("|");
             }
             str.append(" ").append(i);
