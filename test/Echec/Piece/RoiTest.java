@@ -1,7 +1,7 @@
-package Echec.module.Piece;
+package Echec.Piece;
 
-import Echec.module.Movement;
-import Echec.module.Player;
+import Echec.Movement;
+import Echec.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,8 +68,10 @@ class RoiTest {
         x = 0;
         y = 3;
         roi = new Roi(currentPlayer, x, y);
+
         Piece tourEnemy = new Tour(otherPlayer, 1, 3);
         Piece pionAlly = new Pion(currentPlayer, 0, 2);
+
         currentPlayer.getListPiece().add(pionAlly);
         otherPlayer.getListPiece().add(tourEnemy);
 

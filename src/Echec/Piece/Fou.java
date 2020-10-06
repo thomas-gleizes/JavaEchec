@@ -1,7 +1,7 @@
-package Echec.module.Piece;
+package Echec.Piece;
 
-import Echec.module.Movement;
-import Echec.module.Player;
+import Echec.Movement;
+import Echec.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package Echec.module;
+package Echec;
 
-import Echec.module.Piece.Piece;
+import Echec.Piece.Piece;
 
 import java.util.Objects;
 
@@ -47,12 +47,19 @@ public class Movement {
         return dy;
     }
 
-    public Piece getPiece (){
+    public Piece getCurrentPiece(){
         return currentPiece;
     }
 
     public Piece getPieceEat (){
         return pieceEat;
+    }
+
+    public String displayForList(){
+        String str = "{" + Character.toString(y + 65) + x +  " => " + Character.toString(dy + 65) + dx;
+        if (pieceEat != null)
+            str += pieceEat.getPlayer().getColor() + "(" + pieceEat.getIcon() + ")" + currentPiece.getPlayer().getColor();
+        return str + "}";
     }
 
     @Override
@@ -75,13 +82,6 @@ public class Movement {
     @Override
     public String toString() {
         return Character.toString(dy + 65) + dx;
-    }
-
-    public String displayForList(){
-        String str = "{" + Character.toString(y + 65) + x +  " => " + Character.toString(dy + 65) + dx;
-        if (pieceEat != null)
-            str += pieceEat.getPlayer().getColor() + "(" + pieceEat.getIcon() + ")" + currentPiece.getPlayer().getColor();
-        return str + "}";
     }
 
 }
