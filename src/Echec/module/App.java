@@ -6,4 +6,5 @@ public class App {
         Plateau Echec = new Plateau("Kalat", "Talak");
         Echec.start();
     }
+
 }

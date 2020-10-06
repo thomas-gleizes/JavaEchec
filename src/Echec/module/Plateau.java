@@ -5,7 +5,7 @@ import Echec.module.Piece.Piece;
 import java.util.List;
 import java.util.Scanner;
 
-public class Plateau implements Cloneable {
+public class Plateau {
 
     private Piece[][] bord;
     private Player p1;
@@ -27,8 +27,7 @@ public class Plateau implements Cloneable {
     public void start() {
         System.out.println(this);
         try (Scanner scan = new Scanner(System.in)) {
-            int tx;
-            int ty;
+            int tx, ty;
             boolean game = true;
             Player currentPlayer = p2;
             while (game) {
