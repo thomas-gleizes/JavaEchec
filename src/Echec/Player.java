@@ -82,7 +82,15 @@ public class Player {
     }
 
     public void addMovement(Movement m){
+        nbCoups++;
         listMovement.add(m);
+    }
+
+    public void removeLastMovement (){
+        if (nbCoups != 0) {
+            listMovement.remove(listMovement.size() - 1);
+            nbCoups--;
+        }
     }
 
     public List<Movement> getListMovement (){
@@ -95,13 +103,6 @@ public class Player {
             if (p.getMovePossible(bord).size() > 0) pionJouable.add(p);
         }
         return pionJouable;
-    }
-
-    public void removeLastMovement (){
-        if (nbCoups == 0) {
-            listMovement.remove(listMovement.size() - 1);
-            nbCoups--;
-        }
     }
 
     public String displayListLastMovement(int n){

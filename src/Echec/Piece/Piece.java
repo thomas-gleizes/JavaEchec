@@ -43,7 +43,6 @@ public abstract class Piece {
     public abstract List<Movement> getMovePossible(Piece[][] bord);
 
     public void moveTo(Movement m, Piece[][] bord) {
-        player.addCoup();
         if (bord[m.getDx()][m.getDy()] != null) m.getPieceEat().getPlayer().getListPiece().remove(bord[m.getDx()][m.getDy()]);
         bord[x][y] = null;
         x = m.getDx();
