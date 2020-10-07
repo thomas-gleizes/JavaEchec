@@ -1,7 +1,6 @@
 package Echec;
 
 import Echec.Piece.*;
-import Echec.module.Piece.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ public class Player {
     private final int num;
     private final String name;
     private final String color;
-    private final List<Piece> listPiece;
+    private List<Piece> listPiece;
     private List<Movement> listMovement;
     private int nbCoups;
 
@@ -86,15 +85,11 @@ public class Player {
         listMovement.add(m);
     }
 
-    public void removeLastMovement(){
-        listMovement.remove(listMovement.size() - 1);
-    }
-
     public List<Movement> getListMovement (){
         return listMovement;
     }
 
-    public List<Piece> getPionJouable (Piece[][] bord){
+    public List<Piece> getPieceJouable(Piece[][] bord){
         List<Piece> pionJouable = new ArrayList<>();
         for (Piece p : listPiece){
             if (p.getMovePossible(bord).size() > 0) pionJouable.add(p);
@@ -102,24 +97,11 @@ public class Player {
         return pionJouable;
     }
 
-    public void rollBack (Piece[][] bord){
-        if (nbCoups > 0){
-            Movement lastMovement = listMovement.get(listMovement.size() - 1);
-            Movement rollBack = new Movement(lastMovement.getCurrentPiece(), lastMovement.getDx(), lastMovement.getDy(), lastMovement.getX(), lastMovement.getY());
-            lastMovement.getCurrentPiece().moveTo(rollBack, bord);
-            bord[rollBack.getX()][rollBack.getY()] = lastMovement.getPieceEat();
-            listMovement.remove(lastMovement);
+    public void removeLastMovement (){
+        if (nbCoups == 0) {
+            listMovement.remove(listMovement.size() - 1);
+            nbCoups--;
         }
-    }
-
-    @Override
-    public String toString() {
-        return color + "\nPlayer : " + num + "\n" +
-                "Name : " + name + "\n" +
-                "Nombre de coup(s) : " + nbCoups + "\n" +
-                "Nombre de pion(s) perdu(s) : " + (16 - listPiece.size()) + "\n" +
-                "Movement précedent : " + displayListLastMovement(5) +
-                "\u001B[0m \n";
     }
 
     public String displayListLastMovement(int n){
@@ -130,6 +112,16 @@ public class Player {
             if (index != 0 && i != n -1) str.append(", ");
         }
         return str.toString();
+    }
+
+    @Override
+    public String toString() {
+        return color + "\nPlayer : " + num + "\n" +
+                "Name : " + name + "\n" +
+                "Nombre de coup(s) : " + nbCoups + "\n" +
+                "Nombre de pion(s) perdu(s) : " + (16 - listPiece.size()) + "\n" +
+                "Movement précedent : " + displayListLastMovement(5) +
+                "\u001B[0m \n";
     }
 
 }

@@ -2,6 +2,7 @@ package Echec;
 
 import Echec.Piece.Piece;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,9 +11,11 @@ public class Plateau {
     private Piece[][] bord;
     private Player p1;
     private Player p2;
+    private List<Movement> storyMovement;
 
     public Plateau(String namePlayer1, String namePlayer2) {
         bord = new Piece[8][8];
+        storyMovement = new ArrayList<>();
         this.p1 = new Player(1, namePlayer1);
         this.p2 = new Player(2, namePlayer2);
 
@@ -56,7 +59,7 @@ public class Plateau {
                                             p.moveTo(m, bord);
                                             doMove = false;
                                             choice = false;
-                                            currentPlayer.addMovement(m);
+                                            addMovement(m);
                                             System.out.println("Mouvement Fait");
                                             System.out.println(this);
                                             game = !isFinish();
@@ -67,9 +70,9 @@ public class Plateau {
                             } else System.out.println("Cette piece ne peux pas bougé !");
                         } else System.out.println("Emplacement incorect !");
                     } else if (command.equals("RO")) {
-                        Player rollBackPlayer = currentPlayer.equals(p1) ? p2 : p1;
-                        if (rollBackPlayer.getNbCoups() > 0) {
-                            rollBackPlayer.rollBack(bord);
+                        if (!storyMovement.isEmpty()) {
+                            rollBack();
+                            choice = false;
                             System.out.println(this);
                         } else System.out.println("Rollback Impossible");
                     } else System.out.println("Coordonnée invalid");
@@ -90,6 +93,26 @@ public class Plateau {
             return true;
         }
         return false;
+    }
+
+    public void addMovement(Movement move) {
+        Player p = move.getCurrentPiece().getPlayer();
+        storyMovement.add(move);
+        p.addMovement(move);
+    }
+
+    public Movement getLastMovement(){
+        return storyMovement.get(storyMovement.size() - 1);
+    }
+
+    public void rollBack() {
+        Movement lastMovement = getLastMovement();
+        Player player = lastMovement.getCurrentPiece().getPlayer();
+        Movement rollBack = new Movement(lastMovement.getCurrentPiece(), lastMovement.getDx(), lastMovement.getDy(), lastMovement.getX(), lastMovement.getY());
+        lastMovement.getCurrentPiece().moveTo(rollBack, bord);
+        bord[rollBack.getX()][rollBack.getY()] = lastMovement.getPieceEat();
+        storyMovement.remove(lastMovement);
+        player.removeLastMovement();
     }
 
     public String displayStoryMovement() {

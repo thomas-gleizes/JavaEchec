@@ -24,7 +24,6 @@ class PieceTest {
     @Test
     void moveTo() {
         currentPlayer.addCoup();
-        otherPlayer.addCoup();
 
         Piece pion = new Pion(currentPlayer, 3, 3);
         Movement movement = new Movement(pion, pion.x, pion.y, 4, 3);
@@ -39,7 +38,12 @@ class PieceTest {
         Piece pionTest = new Pion(currentPlayer, 4, 3);
         bordTest[4][3] = pionTest;
 
-        assertEquals(bord, bordTest);
+        assertEquals(bord[4][3], bordTest[4][3]);
+    }
+
+    @Test
+    void moveToEnnemy(){
+         
     }
 
 }
