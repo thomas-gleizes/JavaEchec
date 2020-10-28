@@ -71,6 +71,18 @@ public class Player {
         return color;
     }
 
+    public List<Movement> getListMovement (){
+        return listMovement;
+    }
+
+    public List<Piece> getPieceJouable(Piece[][] bord){
+        List<Piece> pionJouable = new ArrayList<>();
+        for (Piece p : listPiece){
+            if (p.getMovePossible(bord).size() > 0) pionJouable.add(p);
+        }
+        return pionJouable;
+    }
+
     public void addCoup() {
         nbCoups++;
     }
@@ -91,18 +103,6 @@ public class Player {
             listMovement.remove(listMovement.size() - 1);
             nbCoups--;
         }
-    }
-
-    public List<Movement> getListMovement (){
-        return listMovement;
-    }
-
-    public List<Piece> getPieceJouable(Piece[][] bord){
-        List<Piece> pionJouable = new ArrayList<>();
-        for (Piece p : listPiece){
-            if (p.getMovePossible(bord).size() > 0) pionJouable.add(p);
-        }
-        return pionJouable;
     }
 
     public String displayListLastMovement(int n){

@@ -13,22 +13,17 @@ public class Movement {
     private final int dx;
     private final int dy;
 
-    public Movement(Piece currentPiece, int x, int y, int tx, int ty, Piece pieceEat) {
+    public Movement(Piece currentPiece, int x, int y, int dx, int dy, Piece pieceEat) {
         this.currentPiece = currentPiece;
         this.pieceEat = pieceEat;
         this.x = x;
         this.y = y;
-        this.dx = tx;
-        this.dy = ty;
+        this.dx = dx;
+        this.dy = dy;
     }
 
     public Movement(Piece currentPiece, int x, int y, int dx, int dy) {
-        this.currentPiece = currentPiece;
-        this.pieceEat = null;
-        this.x = x;
-        this.y = y;
-        this.dx = dx;
-        this.dy = dy;
+        this(currentPiece, x, y, dx, dy, null);
     }
 
     public int getX() {
