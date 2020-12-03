@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Plateau {
+public class Board {
 
     private Piece[][] bord;
     private Player p1;
     private Player p2;
     private List<Movement> storyMovement;
 
-    public Plateau(String namePlayer1, String namePlayer2) {
+    public Board(String namePlayer1, String namePlayer2) {
         bord = new Piece[8][8];
         storyMovement = new ArrayList<>();
         this.p1 = new Player(1, namePlayer1);
