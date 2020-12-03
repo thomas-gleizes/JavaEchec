@@ -38,9 +38,17 @@ public class Board {
                 boolean choice = true;
                 while (choice) {
                     System.out.print("Choix du" + currentPlayer.getColor() + " Joueur " + currentPlayer.getNum() + "\u001B[0m : ");
-                    String command = scan.nextLine() + "";
-                    ty = command.charAt(0) - 65;
-                    tx = command.charAt(1) - 48;
+                    String command;
+                    try {
+                        command = scan.nextLine() + "";
+                        ty = command.charAt(0) - 65;
+                        tx = command.charAt(1) - 48;
+                    } catch (Exception exception) {
+                        System.out.println("une erreur est survenue");
+                        continue;
+                    }
+
+
                     if (tx >= 0 && tx <= 7 && ty >= 0 && ty <= 7 && command.length() == 2) {
                         int index = currentPlayer.getListPiece().indexOf(bord[tx][ty]);
                         if (index != -1) {
@@ -50,9 +58,14 @@ public class Board {
                                 boolean doMove = true;
                                 while (doMove) {
                                     System.out.println("Movement Possible : " + listMovementPossible);
-                                    command = scan.nextLine();
-                                    ty = command.charAt(0) - 65;
-                                    tx = command.charAt(1) - 48;
+                                    try {
+                                        command = scan.nextLine();
+                                        ty = command.charAt(0) - 65;
+                                        tx = command.charAt(1) - 48;
+                                    } catch (Exception exception) {
+                                        System.out.println("une erreur est survenue");
+                                        continue;
+                                    }
                                     Movement move = new Movement(p, p.getX(), p.getY(), tx, ty);
                                     for (Movement m : listMovementPossible) {
                                         if (m.equals(move)) {
